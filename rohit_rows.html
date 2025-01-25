@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+<table id="myTable">
+    <tr>
+      <th>Column 1</th>
+      <th>Column 2</th>
+      <th>Column 3</th>
+    </tr>
+  </table>
+  <button onclick="addRow()">Add Row</button>
+  <button onclick="deleteRow()">Delete Row</button>
+  <h2> List </h2>
+    <input type = "text" id = "item" />
+    <button onclick = "addItem()"> Add Item </button>
+    <button onclick = "deleteItem()"> Delete Item </button>
+    <button onclick = "clearList()"> Clear List </button>
+    <ul id = "list">
+    </ul>
+  <script>
+    function addRow() {
+  var row = document.createElement("tr");
+
+  
+  var cell1 = document.createElement("td");
+  var cell2 = document.createElement("td");
+  var cell3 = document.createElement("td");
+
+
+  cell1.innerHTML = "New Cell 1";
+  cell2.innerHTML = "New Cell 2";
+  cell3.innerHTML = "New Cell 3";
+
+  
+  row.appendChild(cell1);
+  row.appendChild(cell2);
+  row.appendChild(cell3);
+
+ 
+  var table = document.getElementById("myTable");
+  table.appendChild(row);
+}
+function deleteRow() {
+  var table = document.getElementById("myTable");
+
+ 
+  if (table.rows.length > 1) {
+    table.deleteRow(-1);
+  }
+}
+function addItem() {
+    var item = document.getElementById("item").value;
+    var li = document.createElement("li");
+    li.textContent = item;
+    document.getElementById("list").appendChild(li);
+}
+
+function deleteItem() {
+    var list = document.getElementById("list");
+    if (list.childNodes.length > 0) {
+        list.removeChild(list.lastChild);
+    }
+}
+
+function clearList() {
+    var list = document.getElementById("list");
+    while (list.childNodes.length > 0) {
+        list.removeChild(list.lastChild);
+    }
+}
+
+  </script>
+</body>
+</html>
